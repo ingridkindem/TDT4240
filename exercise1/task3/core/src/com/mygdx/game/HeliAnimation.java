@@ -11,7 +11,7 @@ public class HeliAnimation extends ApplicationAdapter {
     public static final int WIDTH = 480;
     public static final int HEIGHT = 800;
 
-    public static final String TITLE = "Helicopter";
+    public static final String TITLE = "Helicopter Animation";
     private GameStateManager gsm;
     private SpriteBatch batch;
 
@@ -19,7 +19,6 @@ public class HeliAnimation extends ApplicationAdapter {
 
     @Override
     public void create() {
-        Gdx.gl.glClearColor(25, 100, 5, 50);
         batch = new SpriteBatch();
         gsm = new GameStateManager();
         gsm.push(new MenuState(gsm));
@@ -27,8 +26,6 @@ public class HeliAnimation extends ApplicationAdapter {
 
     @Override
     public void render() {
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
         batch.begin();
         batch.end();
 

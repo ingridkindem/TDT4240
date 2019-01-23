@@ -6,40 +6,37 @@ import com.badlogic.gdx.math.Vector3;
 import com.mygdx.game.HeliAnimation;
 
 public class Heli {
-    private static int GRAVITY = -150;
+    private static int VELO = -150;
     private Vector3 position;
     private Vector3 velocity;
 
-    private boolean lastTouched;
-
-    private TextureRegion helicopter;
+    private Animation heliAnimation;
 
 
     public Heli(int x, int y) {
         position = new Vector3(x, y, 0);
-        velocity = new Vector3(GRAVITY, 100, 0);
-        helicopter = new TextureRegion(new Texture("dog.png"));
-        lastTouched = false;
+        velocity = new Vector3(VELO, 100, 0);
+        heliAnimation = new Animation(0.4f);
     }
 
 
     public void update(float dt) {
+        heliAnimation.update(dt);
         if (position.x < 0) {
-            helicopter.flip(true, false);
             position.add(3, 0, 0);
-            lastTouched = true;
+            heliAnimation.frames = heliAnimation.framesR;
             velocity.add(-2 * velocity.x, 0, 0);
-        } else if (position.x > HeliAnimation.WIDTH - helicopter.getTexture().getWidth()) {
-            helicopter.flip(true, false);
+        } else if (position.x > HeliAnimation.WIDTH - heliAnimation.frameWidth) {
             position.add(-3, 0, 0);
-            lastTouched = false;
+            heliAnimation.frames = heliAnimation.framesL;
+
             velocity.add(-2 * velocity.x, 0, 0);
         }
 
         if (position.y < 0) {
             position.add(0, 3, 0);
             velocity.add(0, -2 * velocity.y, 0);
-        } else if (position.y > (HeliAnimation.HEIGHT - 2 * helicopter.getTexture().getHeight())) {
+        } else if (position.y > (HeliAnimation.HEIGHT - 2 * heliAnimation.getFrame().getRegionHeight())) {
             position.add(0, -3, 0);
             velocity.add(0, -2 * velocity.y, 0);
         }
@@ -54,7 +51,7 @@ public class Heli {
 
 
     public TextureRegion getTexture() {
-        return helicopter;
+        return heliAnimation.getFrame();
     }
 
     public void jump() {
