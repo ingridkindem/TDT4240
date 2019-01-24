@@ -6,9 +6,9 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import java.util.ArrayList;
 
 public class Animation {
-    protected ArrayList <TextureRegion> frames;
-    protected ArrayList <TextureRegion> framesR;
-    protected ArrayList <TextureRegion> framesL;
+    protected ArrayList<TextureRegion> frames;
+    protected ArrayList<TextureRegion> framesR;
+    protected ArrayList<TextureRegion> framesL;
 
 
     private float maxFrameTime;
@@ -26,7 +26,7 @@ public class Animation {
     protected int frameWidth;
 
 
-    public Animation(float cycleTime){
+    public Animation(float cycleTime) {
         frameCount = 4;
 
         h1 = new Texture("heli1.png");
@@ -59,18 +59,18 @@ public class Animation {
         frame = 0;
     }
 
-    public void update(float dt){
+    public void update(float dt) {
         currentFrameTime += dt;
-        if(currentFrameTime > maxFrameTime){
+        if (currentFrameTime > maxFrameTime) {
             frame++;
             currentFrameTime = 0;
         }
-        if(frame>=frameCount){
-            frame=0;
+        if (frame >= frameCount) {
+            frame = 0;
         }
     }
 
-    public TextureRegion getFrame(){
+    public TextureRegion getFrame() {
         return frames.get(frame);
     }
 }

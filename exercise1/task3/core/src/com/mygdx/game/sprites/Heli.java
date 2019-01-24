@@ -19,9 +19,9 @@ public class Heli {
         heliAnimation = new Animation(0.4f);
     }
 
-
     public void update(float dt) {
         heliAnimation.update(dt);
+
         if (position.x < 0) {
             position.add(3, 0, 0);
             heliAnimation.frames = heliAnimation.framesR;
@@ -46,16 +46,31 @@ public class Heli {
     }
 
     public Vector3 getPosition() {
+
         return position;
     }
 
 
     public TextureRegion getTexture() {
+
         return heliAnimation.getFrame();
     }
 
     public void jump() {
-        velocity.y = 250;
+        velocity.y = (int) (Math.random() * 300 + 50);
 
+    }
+
+
+    public Vector3 getVelocity() {
+        return velocity;
+    }
+
+    public void addVelocity(Vector3 velocityNew) {
+        velocity.add(velocityNew);
+    }
+
+    public void addPosition(Vector3 positionNew) {
+        position.add(positionNew);
     }
 }
