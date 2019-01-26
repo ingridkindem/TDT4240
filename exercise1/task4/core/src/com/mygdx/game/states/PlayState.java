@@ -89,7 +89,7 @@ public class PlayState extends State {
     protected void ballOut() {
         if (ball.getPosition().x > Pong.WIDTH || ball.getPosition().x < 0) {
             if (ball.getPosition().x > Pong.WIDTH) {
-                if (score1 == 2) {
+                if (score1 == 20) {
                     gsm.set(new EndState(gsm, 1));
                     dispose();
 
@@ -99,7 +99,7 @@ public class PlayState extends State {
 
             }
             if (ball.getPosition().x < 0) {
-                if (score2 == 2) {
+                if (score2 == 20) {
                     gsm.set(new EndState(gsm, 2));
                     dispose();
 
