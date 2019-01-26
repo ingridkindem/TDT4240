@@ -6,7 +6,7 @@ import com.badlogic.gdx.math.Vector3;
 import com.mygdx.game.HeliMove;
 
 public class Heli {
-    private static int pos = 4;
+    private static int pos = 3;
     private Vector3 position;
 
     private boolean lastTouched;

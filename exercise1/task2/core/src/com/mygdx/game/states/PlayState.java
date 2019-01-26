@@ -12,15 +12,19 @@ import com.mygdx.game.sprites.Heli;
 
 public class PlayState extends State {
     private Heli heli;
+
     private Texture bg;
+
     private Texture up;
     private Texture down;
     private Texture left;
     private Texture right;
+
     private Rectangle upR;
     private Rectangle downR;
     private Rectangle leftR;
     private Rectangle rightR;
+
     private BitmapFont font;
 
 
