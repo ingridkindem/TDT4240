@@ -7,8 +7,8 @@ import com.mygdx.game.Pong;
 
 public class Ball {
 
-    public final static Vector3 startPositionBall = new Vector3(Pong.WIDTH / 2 - Ball.SIZE / 2, Pong.HEIGHT / 2 - Ball.SIZE / 2, 0);
-    private final static Vector3 startVelocityBall = new Vector3(250,0,0);
+    public Vector3 startPositionBall = new Vector3(Pong.WIDTH / 2 - Ball.SIZE / 2, Pong.HEIGHT / 2 - Ball.SIZE / 2, 0);
+    public final static Vector3 startVelocityBall = new Vector3(300, 200, 0);
 
     private Vector3 position;
     private Vector3 velocity;
@@ -44,25 +44,19 @@ public class Ball {
         return position;
     }
 
-    public void setPosition(Vector3 position) {
+    public void setPosition(Vector3 positionNew) {
 
-        this.position = position;
+        position.set(positionNew);
     }
 
-    public void addPosition(Vector3 position){
+    public void addPosition(Vector3 position) {
 
         this.position = this.position.add(position);
     }
 
-
     public Vector3 getVelocity() {
 
         return velocity;
-    }
-
-    public void setVelocity(Vector3 velocity) {
-
-        this.velocity = velocity;
     }
 
     public void addVelocity(Vector3 velocity) {

@@ -1,25 +1,33 @@
 package com.mygdx.game.states;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.game.Pong;
 
 
-public class MenuState extends State {
+public class EndState extends State {
     private Texture background;
-    private Texture playBtn;
+    private BitmapFont font;
+    private int winner;
 
-    public MenuState(GameStateManager gsm) {
+
+    public EndState(GameStateManager gsm, int i) {
         super(gsm);
         background = new Texture("bgPong.png");
-        playBtn = new Texture("play.png");
+        font = new BitmapFont();
+        font.getData().setScale(4);
+        font.setColor(Color.MAGENTA);
+        winner = i;
+
     }
 
     @Override
     public void handleInput() {
         if (Gdx.input.justTouched()) {
-            gsm.set(new PlayState(gsm));
+            gsm.set(new MenuState(gsm));
             dispose();
         }
 
@@ -35,7 +43,8 @@ public class MenuState extends State {
     public void render(SpriteBatch sb) {
         sb.begin();
         sb.draw(background, 0, 0, Pong.WIDTH, Pong.HEIGHT);
-        sb.draw(playBtn, (Pong.WIDTH / 2) - (int) (0.1 * playBtn.getWidth() / 2), Pong.HEIGHT / 2, (int) (playBtn.getWidth() * 0.1), (int) (playBtn.getHeight() * 0.1));
+        font.draw(sb, "PLAYER " + winner + " WINS", Pong.WIDTH / 2 - 222, Pong.HEIGHT - 200);
+
         sb.end();
 
     }
@@ -43,7 +52,7 @@ public class MenuState extends State {
     @Override
     public void dispose() {
         background.dispose();
-        playBtn.dispose();
+        font.dispose();
 
     }
 
